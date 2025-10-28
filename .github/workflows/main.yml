@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Java (Temurin recommended by SonarCloud)
+      # Step 2: Set up Java (Temurin is SonarCloud recommended)
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -23,11 +23,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Step 3: Build the Maven project
+      # Step 3: Build with Maven
       - name: Build with Maven
         run: mvn -B clean verify
 
-      # Step 4: Run SonarCloud analysis via Maven plugin
+      # Step 4: Analyze with SonarCloud
       - name: Run SonarCloud analysis
         run: |
           mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
@@ -36,5 +36,5 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.token=$SONAR_TOKEN
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # auto-created by GitHub
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # create this secret in your repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # auto-provided
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    # you must create this in repo secrets
