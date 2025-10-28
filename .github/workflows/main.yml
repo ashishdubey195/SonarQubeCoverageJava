@@ -37,7 +37,7 @@ jobs:
       - name: Build and analyze with SonarCloud
         run: |
           mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.projectKey=sonar-jenkins-project-githubactions \
+            -Dsonar.projectKey=sonar-jenkins-organization_sonar-jenkins-project-githubactions \
             -Dsonar.organization=sonar-jenkins-demo-organization \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
