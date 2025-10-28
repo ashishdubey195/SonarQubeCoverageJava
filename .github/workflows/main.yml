@@ -25,8 +25,8 @@ jobs:
 
       - name: Analyze with SonarCloud
         run: mvn -B sonar:sonar \
-          -Dsonar.projectKey=sonardemo-project-reachability_project1 \
-          -Dsonar.organization=sonardemo-project-reachability \
+          -Dsonar.projectKey=sonar-jenkins-project-githubactions \
+          -Dsonar.organization=sonar-jenkins-demo-organization \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=$SONAR_TOKEN
         env:
